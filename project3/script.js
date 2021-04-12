@@ -13,6 +13,18 @@ sites = [
     {
         id: $('#filterOS'),
         site: 'http://randyconnolly.com/funwebdev/services/visits/os.php'   
+    },
+    {
+        id: $('#geochart'),
+        site: 'https://developers.google.com/chart/'
+    },
+    {
+        id: $('#piechart'),
+        site: 'https://developers.google.com/chart/'
+    },
+    {
+        id: $('#columnchart'),
+        site: 'https://developers.google.com/chart/'
     }
 
 ]
@@ -70,4 +82,73 @@ const filterTable = (list) => {
         });
         populateListTable(current);
     });
+// Populate the Map
+    // google.charts.load('current', {
+    //     'packages': ['map'],
+        
+    //     // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+    //     'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+        
+    //     });
+    google.charts.load('current', { packages: [ 'corechart'], callback: drawChart });
+        google.charts.setOnLoadCallback(drawMap);
+    
+        function drawMap() {
+          var data = google.visualization.arrayToDataTable([
+            ['Country', 'Population'],
+            ['China', 'China: 1,363,800,000'],
+            ['India', 'India: 1,242,620,000'],
+            ['US', 'US: 317,842,000'],
+            ['Indonesia', 'Indonesia: 247,424,598'],
+            ['Brazil', 'Brazil: 201,032,714'],
+            ['Pakistan', 'Pakistan: 186,134,000'],
+            ['Nigeria', 'Nigeria: 173,615,000'],
+            ['Bangladesh', 'Bangladesh: 152,518,015'],
+            ['Russia', 'Russia: 146,019,512'],
+            ['Japan', 'Japan: 127,120,000']
+          ]);
+    
+        var options = {
+          showTooltip: true,
+          showInfoWindow: true
+        };
+    
+        var map = new google.visualization.Map(document.getElementById('chart_div'));
+    
+        map.draw(data, options);
+      };
+
+      //Draw Piechart
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+
+      //Draw Column chart
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Visitations', { role: 'style' } ],
+          ['2010', 10, 'color: gray'],
+          ['2020', 14, 'color: #76A7FA'],
+          ['2030', 16, 'opacity: 0.2'],
+          ['2040', 22, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+          ['2050', 28, 'stroke-color: #871B47; stroke-opacity: 0.6; stroke-width: 8; fill-color: #BC5679; fill-opacity: 0.2']
+        ]);
 }
