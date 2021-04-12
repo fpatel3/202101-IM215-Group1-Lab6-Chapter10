@@ -13,20 +13,7 @@ sites = [
     {
         id: $('#filterOS'),
         site: 'http://randyconnolly.com/funwebdev/services/visits/os.php'   
-    },
-    {
-        id: $('#geochart'),
-        site: 'https://developers.google.com/chart/'
-    },
-    {
-        id: $('#piechart'),
-        site: 'https://developers.google.com/chart/'
-    },
-    {
-        id: $('#columnchart'),
-        site: 'https://developers.google.com/chart/'
     }
-
 ]
 
 // populating the list in the table
