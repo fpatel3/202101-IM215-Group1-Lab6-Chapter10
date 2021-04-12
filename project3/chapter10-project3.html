@@ -46,34 +46,42 @@
 
         chart.draw(data, options);
 
-        // var map = new google.visualization.Map(document.getElementById('geochart'));
-    
-        // map.draw(data, options);
-      };
+        };
 
       // //Draw Piechart
 
-      // function drawChart() {
+      google.charts.load('current', {
+        'packages':['piechart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
 
-      //   var data = google.visualization.arrayToDataTable([
-      //     ['Task', 'Hours per Day'],
-      //     ['Work',     11],
-      //     ['Eat',      2],
-      //     ['Commute',  2],
-      //     ['Watch TV', 2],
-      //     ['Sleep',    7]
-      //   ]);
+        var data = google.visualization.arrayToDataTable([
+          ['Browser', 'Usage'],
+          ['Unknown',10],
+          ['Chrome',24],
+          ['Firefox',18],
+          ['Internet Explorer',8 ],
+          ['Edge',5],
+          ['Safari',8],
+          ['Mobile chrome',15],
+          ['Mobile Safari',12],
+          ['Opera',0]
+        ]);
 
-      //   var options = {
-      //     title: 'My Daily Activities'
-      //   };
+        var options = {
+          title: 'Browsers'
+        };
 
-      //   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-      //   chart.draw(data, options);
-      // }
+        chart.draw(data, options);
+      }
 
-      // //Draw Column chart
+      //Draw Column chart
 
       // function drawChart() {
       //   var data = google.visualization.arrayToDataTable([
@@ -214,10 +222,10 @@
                   <!-- mdl-cell + mdl-card -->
                   <div class="mdl-cell mdl-cell--12-col card-lesson mdl-card  mdl-shadow--2dp">
                     <div class="mdl-card__title mdl-color--deep-purple mdl-color-text--white">
-                      <h2 class="mdl-card__title-text">Browsers</h2>
+                      <h2 class="mdl-card__title-text" >Browsers</h2>
                     </div>
                     <div class="mdl-card__supporting-text">       
-                          <div id="piechart"></div>    
+                          <div id="piechart" style="width: 500px; height: 200px;"></div>    
                                   
                     </div>    
                   </div>  <!-- / mdl-cell + mdl-card -->        
