@@ -83,29 +83,19 @@ const filterTable = (list) => {
         populateListTable(current);
     });
 // Populate the Map
-    // google.charts.load('current', {
-    //     'packages': ['map'],
-        
-    //     // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-    //     'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
-        
-    //     });
-    google.charts.load('current', { packages: [ 'corechart'], callback: drawChart });
+    google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+
         google.charts.setOnLoadCallback(drawMap);
     
         function drawMap() {
           var data = google.visualization.arrayToDataTable([
-            ['Country', 'Population'],
-            ['China', 'China: 1,363,800,000'],
-            ['India', 'India: 1,242,620,000'],
-            ['US', 'US: 317,842,000'],
-            ['Indonesia', 'Indonesia: 247,424,598'],
-            ['Brazil', 'Brazil: 201,032,714'],
-            ['Pakistan', 'Pakistan: 186,134,000'],
-            ['Nigeria', 'Nigeria: 173,615,000'],
-            ['Bangladesh', 'Bangladesh: 152,518,015'],
-            ['Russia', 'Russia: 146,019,512'],
-            ['Japan', 'Japan: 127,120,000']
+            [result]
+            
           ]);
     
         var options = {
