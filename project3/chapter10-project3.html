@@ -48,7 +48,7 @@
 
         };
 
-      // //Draw Piechart
+      //Draw Piechart
 
       google.charts.load('current', {
         'packages':['piechart'],
@@ -81,38 +81,57 @@
         chart.draw(data, options);
       }
 
-      // //Draw Column chart
-      // google.charts.load('current', {
-      //   'packages':['columnchart'],
-      //   // Note: you will need to get a mapsApiKey for your project.
-      //   // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-      //   'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
-      // });
-      // google.charts.setOnLoadCallback(drawChart);
-      // function drawChart() {
-      //   var data = google.visualization.arrayToDataTable([
-      //   ['Browser', 'Usage'],
-      //     ['Unknown',10],
-      //     ['Chrome',24],
-      //     ['Firefox',18],
-      //     ['Internet Explorer',8 ],
-      //     ['Edge',5],
-      //     ['Safari',8],
-      //     ['Mobile chrome',15],
-      //     ['Mobile Safari',12],
-      //     ['Opera',0]
-      //   ]);
+       
 
-      //   var options = {
-      //     showTooltip: true,
-      //     showInfoWindow: true
-      //   };
+    // Draw column chart
+
+    google.charts.load('current', {
+        'packages':['columnchart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawcChart);
+      function drawcChart() {
+
         
-      //   var chart = new google.visualization.GeoChart(document.getElementById('columnchart'));
+        var data = google.visualization.arrayToDataTable([
+         ['Operating System', 'Usage', { role: 'style' }],
+      
+          ['Unknown',100,'##00008B'],
+          ['Windows 7',6,'##00008B'],
+          ['Windows 8',15,'##00008B'],
+          ['Windows 10',20,'##00008B'],
+          ['Mac 10.11',10,'##00008B'],
+          ['iOS 9.2',18,'##00008B'],
+          ['Android 5.1',6,'##00008B'],
+          ['Windows Vista',2,'##00008B'],
+          ['Android 6.0',2,'##00008B'],
+          ['iOS 8',2,'##00008B'],
+         
+        
+      ]);
+        
 
-      //   chart.draw(data, options);
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
 
-      //   };
+      var options = {
+        title: "Usage of Operating System",
+        width: 450,
+        height: 400,
+        bar: {groupWidth: "100%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("columnchart"));
+      chart.draw(view, options);
+  }
+
       </script>  
     
   
